@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            padding-left: 10px;
+        }
+
+        .table_row:nth-child(even){
+            background-color: lightpink;
+        }
+
+        .table_row:nth-child(odd){
+            background-color:lightgrey;
+        }
+
+        .table_header {
+            background-color: lightgrey;
+            text-align: left; 
+            text-transform: uppercase;   
+        }
+
+        .table_cell {
+            padding: 15px 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>user table</h1>
+
+    <table class = "table">
+        <tr class = "table_header">
+            {% for header in headings %}
+            
+            {# for every header cell draw one header cell, everytime it goes through for loop it adds an element to html #}
+            
+            <th class = "table_cell">{{ header }}</th>
+            {% endfor %}
+        </tr>
+        {# iterate through the data in row #}
+        {% for user in users %}
+        <tr class = "table_row">
+            {# iterate through the cell data #}
+            <td class = "table_cell"><p>{{ user['first_name'] }}</p></td>
+            <td class = "table_cell"><p>{{ user['last_name'] }}</p></td>
+            <td class = "table_cell"><p>{{ user['first_name'] }}{{' '}}{{ user['last_name'] }}</p></td>
+            {# Figure out if there is a better way to join two key values for printing #}
+        </tr>
+        {% endfor %}
+
+</body>
+</html>
